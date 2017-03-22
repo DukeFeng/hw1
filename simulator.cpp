@@ -4,7 +4,13 @@
 #include<string>
 #include "head.h"
 using namespace std;
-
+string instucts[5000];
+unsigned long datas[5000];
+int ins_num,data_num;
+unsigned char buffer[5000];
+long long longmin = -1 * (long long)2147483648;
+ofstream outfile("snapshot.rpt");
+ofstream errorfile("error_dump.rpt");
 
 unsigned long BtoD(string st) {
 	int result = 0, ratio = 1;
@@ -131,8 +137,8 @@ int main()
 	Res_init();
 	int inum = BtoD(instucts[1]);
 	deal_ins(pc,1);
-	int i;
-	cin >> i;
+	outfile.close();
+	errorfile.close();
     return 0;
 }
 

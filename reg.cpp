@@ -4,18 +4,20 @@
 #include "head.h"
 using namespace std;
 //-----------------------------Res----------------------------------
-
+unsigned long res[32], Lo=0, Hi=0, pc=0,moto_pc=0;
 void Res_init() {
-	Lo=0, Hi=0, pc=0,moto_pc=0;
 	pc = BtoD(instucts[0]); moto_pc = pc;
 	res[29] = datas[0];
-	cout << "cycle 0" << endl;
-	for (int i = 0; i < 32; i++) { cout << "$"; if (i < 10) cout << "0"; cout << i << ": " << DtoH(res[i]) << endl; }
-	cout << "$LO: " << DtoH(Lo) << endl;
-	cout << "$HI: " << DtoH(Hi) << endl;
-	cout << "PC: " << DtoH(pc) << endl;
-	cout << endl;
-	cout << endl;
+	
+	if (outfile.is_open()) {
+		outfile << "cycle 0" << endl;
+		for (int i = 0; i < 32; i++) { outfile << "$"; if (i < 10) outfile << "0"; outfile << i << ": " << DtoH(res[i]) << endl; }
+		outfile << "$LO: " << DtoH(Lo) << endl;
+		outfile << "$HI: " << DtoH(Hi) << endl;
+		outfile << "PC: " << DtoH(pc) << endl;
+		outfile << endl;
+		outfile << endl;
+	}
 }
 
 //------------------------------------------------------------------
