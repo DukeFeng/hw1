@@ -5,14 +5,14 @@
 #include "head.h"
 using namespace std;
 string instucts[5000];
-unsigned long datas[5000];
+unsigned int datas[5000];
 int ins_num,data_num;
 unsigned char buffer[5000];
-long long longmin = -1 * (long long)2147483648;
+long intmin = -1 * (long)2147483648;
 ofstream outfile("snapshot.rpt");
 ofstream errorfile("error_dump.rpt");
 
-unsigned long BtoD(string st) {
+unsigned int BtoD(string st) {
 	int result = 0, ratio = 1;
 	for (int i = st.length()-1; i >= 0; i--) {
 		result += ratio*(st[i] - 48);
@@ -20,7 +20,7 @@ unsigned long BtoD(string st) {
 	}
 	return result;
 }
-long BtoDs(string st) {
+int BtoDs(string st) {
 	int result = 0, ratio = 1;
 	string s = st.substr(1);
 	if (st[0] == '1')  for (int i = 0; i < s.length(); i++) if (s[i] == '0') s[i] = '1'; else s[i] = '0';
@@ -40,9 +40,9 @@ void HtoB(int i, int j, int num) {
 	}
 }
 
-string DtoH(unsigned long number) {
+string DtoH(unsigned int number) {
 	string result="00000000";
-	unsigned long temp=number;
+	unsigned int temp=number;
 	for (int i = 7; i >= 0; i--) {
 		int k = temp % 16;
 		if (k < 10) result[i] = k + '0'; else result[i] = k - 10 + 'A';
@@ -50,11 +50,11 @@ string DtoH(unsigned long number) {
 	}
 	return "0x" + result;
 }
-unsigned long HtoD(int n,int byt_num,bool isInit) {
+unsigned int HtoD(int n,int byt_num,bool isInit) {
 	int kara; if (isInit)kara = n * byt_num; else kara = n;
 	int made = kara + byt_num-1;
-	unsigned long ratio = 1;
-	unsigned long result = 0;
+	unsigned int ratio = 1;
+	unsigned int result = 0;
 	for (int i = made; i >= kara; i--) {
 		result += buffer[i] * ratio;
 		ratio *= 256;
@@ -62,9 +62,9 @@ unsigned long HtoD(int n,int byt_num,bool isInit) {
 	return result;
 }
 
-void save(int addr, int byt_num,unsigned long input) {
+void save(int addr, int byt_num,unsigned int input) {
 	int kara = addr; int made = kara + byt_num - 1;
-	unsigned long inn = input;
+	unsigned int inn = input;
 	for (int i = made; i >= kara; i--) {
 		buffer[i] = input % 256;
 		input /= 256;

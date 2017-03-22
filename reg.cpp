@@ -4,7 +4,7 @@
 #include "head.h"
 using namespace std;
 //-----------------------------Res----------------------------------
-unsigned long res[32], Lo=0, Hi=0, pc=0,moto_pc=0;
+unsigned int res[32], Lo=0, Hi=0, pc=0,moto_pc=0;
 void Res_init() {
 	pc = BtoD(instucts[0]); moto_pc = pc;
 	res[29] = datas[0];
