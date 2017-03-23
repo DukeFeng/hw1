@@ -12,8 +12,8 @@ void Res_init() {
 	if (outfile.is_open()) {
 		outfile << "cycle 0" << endl;
 		for (int i = 0; i < 32; i++) { outfile << "$"; if (i < 10) outfile << "0"; outfile << i << ": " << DtoH(res[i]) << endl; }
-		outfile << "$LO: " << DtoH(Lo) << endl;
 		outfile << "$HI: " << DtoH(Hi) << endl;
+    outfile << "$LO: " << DtoH(Lo) << endl;
 		outfile << "PC: " << DtoH(pc) << endl;
 		outfile << endl;
 		outfile << endl;
