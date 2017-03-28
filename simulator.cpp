@@ -4,10 +4,10 @@
 #include<string>
 #include "head.h"
 using namespace std;
-string instucts[5000];
-unsigned int datas[5000];
+string instucts[50000];
+unsigned int datas[50000];
 int ins_num,data_num;
-unsigned char buffer[5000];
+unsigned char buffer[50000];
 long intmin = -1 * (long)2147483648;
 ofstream outfile("snapshot.rpt");
 ofstream errorfile("error_dump.rpt");
@@ -136,7 +136,12 @@ int main()
 	input();
 	Res_init();
 	int inum = BtoD(instucts[1]);
-	deal_ins(pc,1);
+		int c_n = 1;
+
+	while (((int)pc -(int) moto_pc) / 4 < ins_num&&!go_halt) {
+		deal_ins(pc, c_n);
+		c_n++;
+	}
 	outfile.close();
 	errorfile.close();
     return 0;
