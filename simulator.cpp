@@ -102,7 +102,7 @@ void input() {
 	if (!fin2) {
 		cout << "open error!" << endl;
 	}
-	//char buffer[5000];
+
 	len = 0;
 	while (!fin2.eof()/* && fin.peek() != EOF*/) {
 		char tt;
@@ -117,7 +117,8 @@ void input() {
 		datas[i] = HtoD(i,4,true);
 		
 	}
-	//for (int i = 0; i < data_num; i++) cout <<DtoH( datas[i] )<< endl;
+ 	for (int i=data_num*4;i<50000;i++)buffer[i]=(unsigned char)0;
+	//for (int i = 0; i < data_num; i++) cout <<(int)buffer[16+i]<< endl;
 
 }
 
